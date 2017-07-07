@@ -11,3 +11,10 @@ docker-run:
 
 docker-curl:
 	docker exec -it debug-openjdk-w-docker curl -Ikv https://localhost:9443
+
+compose-build:
+	docker-compose build
+	docker image prune -f
+
+compose-up:
+	docker-compose up --remove-orphans

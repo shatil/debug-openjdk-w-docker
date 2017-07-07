@@ -18,3 +18,14 @@ compose-build:
 
 compose-up:
 	docker-compose up --remove-orphans
+
+svc:
+	set -e
+	mkdir -p svc
+	unzip -d svc target/universal/*-1.0-SNAPSHOT.zip
+	mv svc/*/* svc/
+	rm svc/bin/*.bat
+	mv svc/bin/* svc/bin/start
+
+compose-curl:
+	docker-compose exec client curl -Ikv https://server:9443
